@@ -1,4 +1,4 @@
-# electron-quick-start
+# Music app using React and Electron
 
 **Clone and run for a quick way to see Electron in action.**
 
