@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Search from './components/search.component';
 import Details from './components/details.component';
+import Player from './components/player.component';
+import Progress from './components/progress.component';
 
 // Search component created as a class
 class App extends React.Component {
@@ -10,8 +12,13 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Search/>
-                <Details title={'Title Track'}/> 
+                <Search />
+                <Details title={'Title Track'}/>
+                <Player/>
+                <Progress
+                position = {'0.5'}
+                elapsed={'00:00'}
+                total={'0:40'}/>
             </div>
         );
     }
