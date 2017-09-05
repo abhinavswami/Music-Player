@@ -37,11 +37,12 @@ class AppContainer extends Component {
         }
     }
     // componentDidMount lifecycle method. Called once a component is loaded
-    componentDidMOunt() {
+    componentDidMount() {
         this.randomTrack();
     }
 
     randomTrack() {
+        console.log('Random track() triggered');
         let _this = this;
         // Request for a playlist via Soundcloud using a client id
         Axios
@@ -54,7 +55,8 @@ class AppContainer extends Component {
                 const randomNumber = Math.floor((Math.random() * trackLength) + 1);
 
                 // Set the track state with a random track from the playlist
-                _this.setState({track: response.data.tracks[randomNumber]});
+                _this.setState({track: response.data.tracks[randomNumber], 
+                tracks: response.data.tracks});
             })
             .catch(function (err) {
                 // If something goes wrong, let us know
@@ -106,7 +108,7 @@ class AppContainer extends Component {
     }
 
     handleChange(event, value) {
-
+        console.log('inside handlechange');
         // Update input box
         this.setState({autoCompleteValue: event.target.value});
 
@@ -117,6 +119,7 @@ class AppContainer extends Component {
             .get(`https://api.soundcloud.com/tracks?client_id=${this.client_id}&q=${value}`)
             .then(function (response) {
                 // Update track state
+                console.log('Response.data='+ response.data);
                 _this.setState({tracks: response.data});
             })
             .catch(function (err) {
