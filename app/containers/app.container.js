@@ -42,7 +42,6 @@ class AppContainer extends Component {
     }
 
     randomTrack() {
-        console.log('Random track() triggered');
         let _this = this;
         // Request for a playlist via Soundcloud using a client id
         Axios
@@ -55,8 +54,7 @@ class AppContainer extends Component {
                 const randomNumber = Math.floor((Math.random() * trackLength) + 1);
 
                 // Set the track state with a random track from the playlist
-                _this.setState({track: response.data.tracks[randomNumber], 
-                tracks: response.data.tracks});
+                _this.setState({track: response.data.tracks[randomNumber], tracks: response.data.tracks, playFromPosition: 0, autoCompleteValue: response.data.tracks[randomNumber].title});
             })
             .catch(function (err) {
                 // If something goes wrong, let us know
@@ -108,7 +106,6 @@ class AppContainer extends Component {
     }
 
     handleChange(event, value) {
-        console.log('inside handlechange');
         // Update input box
         this.setState({autoCompleteValue: event.target.value});
 
@@ -119,7 +116,6 @@ class AppContainer extends Component {
             .get(`https://api.soundcloud.com/tracks?client_id=${this.client_id}&q=${value}`)
             .then(function (response) {
                 // Update track state
-                console.log('Response.data='+ response.data);
                 _this.setState({tracks: response.data});
             })
             .catch(function (err) {
@@ -155,6 +151,7 @@ class AppContainer extends Component {
     }
 
     xlArtwork(url) {
+        console.log('url= ' + url);
         return url.replace(/large/, 't500x500');
     }
 
@@ -170,6 +167,7 @@ class AppContainer extends Component {
         return (
             <div className="music" style={style}>
                 <Search
+                    clientId={this.state.client_id}
                     autoCompleteValue={this.state.autoCompleteValue}
                     tracks={this.state.tracks}
                     handleSelect={this
