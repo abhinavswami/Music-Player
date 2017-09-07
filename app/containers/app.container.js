@@ -158,7 +158,7 @@ class AppContainer extends Component {
     render() {
         const style = {
             width: 'auto',
-            height: 'auto',
+            height: '900px',
             backgroundImage: `linear-gradient(
                 rgba(0, 0, 0, 0.7),
                 rgba(0, 0, 0, 0.7)
