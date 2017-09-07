@@ -1,5 +1,7 @@
 # Music app using React and Electron
 
+![Alt Text](https://github.com/abhinavswami/Music-Player/blob/master/screenshots/MusicPlayer.gif)
+
 **Clone and run for a quick way to see Electron in action.**
 
 A basic Electron application needs just these files:
